@@ -83,9 +83,6 @@ defmodule Tester1fp201Web do
     quote do
       # HTML escaping functionality
       import Phoenix.HTML
-      # Core UI components and translation
-      import Tester1fp201Web.CoreComponents
-
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
 
