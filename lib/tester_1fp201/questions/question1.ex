@@ -6,7 +6,7 @@ defmodule Tester1fp201.Questions.Question1 do
   @impl true
   def assigns do
     %{
-      interest_rate: Enum.random([2, 3, 4, 5, 7, 9, 12]) / 100
+      interest_rate: Enum.random([2, 3, 4, 5, 7, 9, 12])
     }
   end
 
@@ -14,7 +14,7 @@ defmodule Tester1fp201.Questions.Question1 do
   def render_question(assigns) do
     ~H"""
     <div>
-      Jak velká bude roční efektivní úroková míra pro termínovaný bankovní účet spojený s <strong><%= @interest_rate * 100 %>% roční nominální úrokovou mírou</strong> a
+      Jak velká bude roční efektivní úroková míra pro termínovaný bankovní účet spojený s <strong><%= @interest_rate %> % roční nominální úrokovou mírou</strong> a
       <ul>
         <li>a) s <strong>ročním</strong> skládáním úroků</li>
         <li>b) s <strong>čtvrtletním</strong> skládáním úroků</li>
@@ -26,7 +26,10 @@ defmodule Tester1fp201.Questions.Question1 do
   end
 
   @impl true
+  @spec render_solution(%{:interest_rate => number, optional(any) => any}) ::
+          Phoenix.LiveView.Rendered.t()
   def render_solution(%{interest_rate: i}) do
+    i = i / 100
     assigns = %{
       a: i,
       b: :math.pow(1 + (i / 4), 4) - 1,
