@@ -6,6 +6,7 @@ defmodule Tester1fp201.Questions do
     Tester1fp201.Questions.Question4,
     Tester1fp201.Questions.Question5,
     Tester1fp201.Questions.Question6,
+    Tester1fp201.Questions.Question7,
   ]
 
   @type rendered_question :: %{
