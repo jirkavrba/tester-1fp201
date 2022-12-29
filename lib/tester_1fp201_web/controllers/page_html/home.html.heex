@@ -1,1 +1,8 @@
-di
+<div>
+    <a href={"?seed=#{@next_seed}"}>Vygenerovat nové zadání</a>
+
+    <%= for %{ question: question, solution: solution } <- @questions do %>
+        <%= question %>
+        <%= solution %>
+    <% end %>
+</div>
