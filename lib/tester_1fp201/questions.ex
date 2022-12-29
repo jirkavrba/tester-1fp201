@@ -1,6 +1,7 @@
 defmodule Tester1fp201.Questions do
   @questions [
-    Tester1fp201.Questions.Question1
+    Tester1fp201.Questions.Question1,
+    Tester1fp201.Questions.Question2
   ]
 
   @type rendered_question :: %{
