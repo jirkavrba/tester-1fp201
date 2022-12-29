@@ -21,6 +21,7 @@ defmodule Tester1fp201.Questions do
     :rand.seed(:exsss, :erlang.phash2(seed))
 
     @questions
+    |> Enum.shuffle()
     |> Enum.map(fn question -> {question, question.assigns()} end)
     |> Enum.map(fn {question, assigns} ->
       %{
