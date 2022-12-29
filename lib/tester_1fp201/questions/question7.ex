@@ -37,7 +37,7 @@ defmodule Tester1fp201.Questions.Question7 do
     assigns = %{
       yield: y,
       years: n,
-      interest_rate: :erlang.float_to_binary(i, decimals: 4),
+      interest_rate: :erlang.float_to_binary(i, decimals: 2),
       cum: :erlang.float_to_binary(cum, decimals: 4),
       tax: :erlang.float_to_binary(t / 100, decimals: 2),
       result: :erlang.float_to_binary(result, decimals: 2),
