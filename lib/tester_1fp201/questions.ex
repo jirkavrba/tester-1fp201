@@ -11,8 +11,10 @@ defmodule Tester1fp201.Questions do
 
   @spec all(binary()) :: list(rendered_question())
   def all(seed) when is_binary(seed) do
+    :rand.seed(:exsss, :erlang.phash2(seed))
+
     @questions
-    |> Enum.map(fn question -> {question, question.assigns(seed)} end)
+    |> Enum.map(fn question -> {question, question.assigns()} end)
     |> Enum.map(fn {question, assigns} ->
       %{
         question: question.render_question(assigns),

@@ -4,7 +4,7 @@ defmodule Tester1fp201.Question do
   """
 
   @doc "Generate assigns for the given seed"
-  @callback assigns(seed :: binary()) :: map()
+  @callback assigns() :: map()
 
   @doc "Render the questions with assigns returned by calling the assigns function"
   @callback render_question(assigns :: map()) :: Phoenix.LiveView.Rendered.t()

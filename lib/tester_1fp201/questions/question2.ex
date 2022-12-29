@@ -4,8 +4,10 @@ defmodule Tester1fp201.Questions.Question2 do
   @behaviour Tester1fp201.Question
 
   @impl true
-  def assigns(seed) when is_binary(seed) do
-    %{}
+  def assigns do
+    %{
+      b: :rand.uniform()
+    }
   end
 
   @impl true
@@ -22,6 +24,7 @@ defmodule Tester1fp201.Questions.Question2 do
     ~H"""
     <div>
       Odpověď 2
+      b: <%= assigns.b %>
     </div>
     """
   end
