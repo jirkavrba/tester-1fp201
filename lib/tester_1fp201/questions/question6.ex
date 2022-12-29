@@ -6,10 +6,10 @@ defmodule Tester1fp201.Questions.Question6 do
   @impl true
   def assigns do
     %{
-      years: 6,
-      yield: 2_000_000,
-      interest_rate: 3.6,
-      tax: 15
+      years: Enum.random(5..8),
+      yield: Enum.random(1..5) * 1_000_000,
+      interest_rate: Enum.random([2.5, 2.8, 3.2, 3.6, 3.8, 4.2]),
+      tax: Enum.random([15, 20, 25])
     }
   end
 
