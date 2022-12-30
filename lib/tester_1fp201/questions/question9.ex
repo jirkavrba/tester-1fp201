@@ -32,7 +32,7 @@ defmodule Tester1fp201.Questions.Question9 do
   @impl true
   def render_solution(%{years: n, first_payment: p1, additional_payments: pn, interest_rate: i}) do
     i = i / 100
-    result = p1 + ((1 - :math.pow(1 + 0.06, -n)) / i) * pn
+    result = p1 + ((1 - :math.pow(1 + i, -n)) / i) * pn
 
     assigns = %{
       years: n,
