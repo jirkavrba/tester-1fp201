@@ -34,20 +34,35 @@ defmodule Tester1fp201.Questions.Question2 do
     i = i / 100
 
     assigns = %{
-      a: :math.pow(1 + i, n) * d,
-      b: :math.pow(1 + (i / 4), n * 4) * d,
-      c: :math.pow(1 + (i / 12), n * 12) * d,
-      d: :math.pow(:math.exp(i), n) * d
+      a: :erlang.float_to_binary(:math.pow(1 + i, n) * d, decimals: 2),
+      b: :erlang.float_to_binary(:math.pow(1 + (i / 4), n * 4) * d, decimals: 2),
+      c: :erlang.float_to_binary(:math.pow(1 + (i / 12), n * 12) * d, decimals: 2),
+      d: :erlang.float_to_binary(:math.pow(:math.exp(i), n) * d, decimals: 2),
+
+      initial_deposit: d,
+      interest_rate: i,
+      duration_years: n,
     }
 
     ~H"""
     <div>
       <ul>
-        <li>a) <%= :erlang.float_to_binary(@a, decimals: 2) %> Kč</li>
-        <li>b) <%= :erlang.float_to_binary(@b, decimals: 2) %> Kč</li>
-        <li>c) <%= :erlang.float_to_binary(@c, decimals: 2) %> Kč</li>
-        <li>d) <%= :erlang.float_to_binary(@d, decimals: 2) %> Kč</li>
+        <li>a) <%= @a %> Kč</li>
+        <li>b) <%= @b %> Kč</li>
+        <li>c) <%= @c %> Kč</li>
+        <li>d) <%= @d %> Kč</li>
       </ul>
+
+      <p>
+        \[
+          \begin{align*}
+            (1 + <%= @interest_rate %>)^{<%= @duration_years %>} \cdot <%= @initial_deposit %> &= <%= @a %> \\
+            (1 + \frac{<%= @interest_rate %>}{4})^{<%= @duration_years %> \cdot 4} \cdot <%= @initial_deposit %> &= <%= @b %> \\
+            (1 + \frac{<%= @interest_rate %>}{12})^{<%= @duration_years %> \cdot 12} \cdot <%= @initial_deposit %> &= <%= @c %> \\
+            e^{<%= @duration_years %>} \cdot <%= @initial_deposit %> &= <%= @d %>
+          \end{align*}
+        \]
+      </p>
     </div>
     """
   end

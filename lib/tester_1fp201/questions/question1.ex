@@ -26,25 +26,36 @@ defmodule Tester1fp201.Questions.Question1 do
   end
 
   @impl true
-  @spec render_solution(%{:interest_rate => number, optional(any) => any}) ::
-          Phoenix.LiveView.Rendered.t()
+  @spec render_solution(%{:interest_rate => number, optional(any) => any}) :: Phoenix.LiveView.Rendered.t()
   def render_solution(%{interest_rate: i}) do
     i = i / 100
     assigns = %{
       a: i,
-      b: :math.pow(1 + (i / 4), 4) - 1,
-      c: :math.pow(1 + (i / 12), 12) - 1,
-      d: :math.exp(i) - 1
+      b: :erlang.float_to_binary(:math.pow(1 + (i / 4), 4) - 1, decimals: 5),
+      c: :erlang.float_to_binary(:math.pow(1 + (i / 12), 12) - 1, decimals: 5),
+      d: :erlang.float_to_binary(:math.exp(i) - 1, decimals: 5),
+      interest_rate: i
     }
 
     ~H"""
     <div>
       <ul>
-        <li>a) <%= @a * 100 %> %</li>
-        <li>b) <%= :erlang.float_to_binary(@b * 100, decimals: 3) %> %</li>
-        <li>b) <%= :erlang.float_to_binary(@c * 100, decimals: 3) %> %</li>
-        <li>b) <%= :erlang.float_to_binary(@d * 100, decimals: 3) %> %</li>
+        <li>a) <%= @a %></li>
+        <li>b) <%= @b %></li>
+        <li>b) <%= @c %></li>
+        <li>b) <%= @d %></li>
       </ul>
+
+      <p>
+        \[
+          \begin{align*}
+            <%= @interest_rate %> &= <%= @interest_rate %> \\
+            (1 + \frac{<%= @interest_rate %>}{4})^{4} - 1 &= <%= @b %> \\
+            (1 + \frac{<%= @interest_rate %>}{12})^{12} - 1 &= <%= @c %> \\
+            e^{<%= @interest_rate %>} - 1 &= <%= @d %> \\
+          \end{align*}
+        \]
+      </p>
     </div>
     """
   end
