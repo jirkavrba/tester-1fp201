@@ -38,16 +38,42 @@ defmodule Tester1fp201.Questions.Question3 do
     i = i / 100
 
     eum_dc = :math.pow(1 + i / 360, 360) - 1
+    eum_dc_sqrt = :math.pow(1 + eum_dc, 1 / 4) - 1
+    eum_dc_sqrt1 = :math.pow(1 + eum_dc, 1 / 4)
     num_qc = (:math.pow(1 + eum_dc, 1 / 4) - 1) * 4
 
     assigns = %{
-      answer: num_qc
+      answer: :erlang.float_to_binary(num_qc * 100, decimals: 3),
+      num_qc: :erlang.float_to_binary(num_qc, decimals: 6),
+      eum_dc: :erlang.float_to_binary(eum_dc, decimals: 6),
+      eum_dc1: :erlang.float_to_binary(eum_dc + 1, decimals: 6),
+      eum_dc_sqrt: :erlang.float_to_binary(eum_dc_sqrt, decimals: 6),
+      eum_dc_sqrt1: :erlang.float_to_binary(eum_dc_sqrt1, decimals: 6),
+      interest_rate: :erlang.float_to_binary(i, decimals: 3),
     }
 
     ~H"""
     <div>
-      <%= :erlang.float_to_binary(@answer * 100, decimals: 3) %> %
-      <!-- TODO: Add solution in latex -->
+      <strong><%= @answer %> %</strong>
+
+      <p>
+        \[
+          \begin{align*}
+            \text{EÚM}_{DC} &= (1 + \frac{<%= @interest_rate %>}{360})^{360} = <%= @eum_dc %> \\
+            \text{EÚM}_{QC} &= \text{EÚM}_{DC} \Rightarrow \text{EÚM}_{QC} = <%= @eum_dc %>
+          \end{align*}
+        \]
+        \[
+          \begin{align*}
+            <%= @eum_dc %> &= (1 + \frac{\text{NÚM}_{QC}}{4})^{4} - 1 \\
+            <%= @eum_dc1 %> &= (1 + \frac{\text{NÚM}_{QC}}{4})^{4} \\
+            \sqrt[4]{<%= @eum_dc1 %>} &= 1 + \frac{\text{NÚM}_{QC}}{4} \\
+            <%= @eum_dc_sqrt1 %> &= 1 + \frac{\text{NÚM}_{QC}}{4} \\
+            \text{NÚM}_{QC} &= <%= @eum_dc_sqrt %> \cdot 4 \\
+            \text{NÚM}_{QC} &= <%= @num_qc %>
+          \end{align*}
+        \]
+      </p>
     </div>
     """
   end
