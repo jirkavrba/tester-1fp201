@@ -35,13 +35,12 @@ defmodule Tester1fp201.Questions.Question2 do
 
     assigns = %{
       a: :erlang.float_to_binary(:math.pow(1 + i, n) * d, decimals: 2),
-      b: :erlang.float_to_binary(:math.pow(1 + (i / 4), n * 4) * d, decimals: 2),
-      c: :erlang.float_to_binary(:math.pow(1 + (i / 12), n * 12) * d, decimals: 2),
+      b: :erlang.float_to_binary(:math.pow(1 + i / 4, n * 4) * d, decimals: 2),
+      c: :erlang.float_to_binary(:math.pow(1 + i / 12, n * 12) * d, decimals: 2),
       d: :erlang.float_to_binary(:math.pow(:math.exp(i), n) * d, decimals: 2),
-
       initial_deposit: d,
       interest_rate: i,
-      duration_years: n,
+      duration_years: n
     }
 
     ~H"""
@@ -55,12 +54,11 @@ defmodule Tester1fp201.Questions.Question2 do
 
       <p>
         \[
-          \begin{align*}
-            (1 + <%= @interest_rate %>)^{<%= @duration_years %>} \cdot <%= @initial_deposit %> &= <%= @a %> \\
-            (1 + \frac{<%= @interest_rate %>}{4})^{<%= @duration_years %> \cdot 4} \cdot <%= @initial_deposit %> &= <%= @b %> \\
-            (1 + \frac{<%= @interest_rate %>}{12})^{<%= @duration_years %> \cdot 12} \cdot <%= @initial_deposit %> &= <%= @c %> \\
-            (e^{<%= @interest_rate %>})^{<%= @duration_years %>} \cdot <%= @initial_deposit %> &= <%= @d %>
-          \end{align*}
+        \begin{align*}
+        (1 + <%= @interest_rate %>)^{<%= @duration_years %>} \cdot <%= @initial_deposit %> &= <%= @a %> \\
+        (1 + \frac{<%= @interest_rate %>}{4})^{<%= @duration_years %> \cdot 4} \cdot <%= @initial_deposit %> &= <%= @b %> \\
+        (1 + \frac{<%= @interest_rate %>}{12})^{<%= @duration_years %> \cdot 12} \cdot <%= @initial_deposit %> &= <%= @c %> \\
+        (e^{<%= @interest_rate %>} - 1)^{<%= @duration_years %>} \cdot <%= @initial_deposit %> &= <%= @d %> \end{align*}
         \]
       </p>
     </div>
