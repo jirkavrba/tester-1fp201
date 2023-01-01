@@ -59,7 +59,7 @@ defmodule Tester1fp201.Questions.Question2 do
             (1 + <%= @interest_rate %>)^{<%= @duration_years %>} \cdot <%= @initial_deposit %> &= <%= @a %> \\
             (1 + \frac{<%= @interest_rate %>}{4})^{<%= @duration_years %> \cdot 4} \cdot <%= @initial_deposit %> &= <%= @b %> \\
             (1 + \frac{<%= @interest_rate %>}{12})^{<%= @duration_years %> \cdot 12} \cdot <%= @initial_deposit %> &= <%= @c %> \\
-            e^{<%= @duration_years %>} \cdot <%= @initial_deposit %> &= <%= @d %>
+            (e^{<%= @interest_rate %>})^{<%= @duration_years %>} \cdot <%= @initial_deposit %> &= <%= @d %>
           \end{align*}
         \]
       </p>
