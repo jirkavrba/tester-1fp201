@@ -18,10 +18,13 @@ defmodule Tester1fp201.Questions.Question6 do
     ~H"""
     <div>
       <p>
-        Kolik musíte uložit na účet, abyste si mohli za <strong><%= @years %> let</strong> z tohoto účtu vyzvednout <strong><%= @yield %> Kč</strong>?
+        Kolik musíte uložit na účet, abyste si mohli za <strong><%= @years %> let</strong>
+        z tohoto účtu vyzvednout <strong><%= @yield %> Kč</strong>?
       </p>
       <p>
-        Účet je spojený s <strong><%= @interest_rate %>% roční nominální úrokovou mírou</strong> a <strong>měsíčním</strong> skládáním úroků.
+        Účet je spojený s <strong><%= @interest_rate %>% roční nominální úrokovou mírou</strong>
+        a <strong>měsíčním</strong>
+        skládáním úroků.
         Zdanění úroků uvažujte ve výši <strong><%= @tax %> %</strong>.
       </p>
     </div>
@@ -40,7 +43,7 @@ defmodule Tester1fp201.Questions.Question6 do
       interest_rate: :erlang.float_to_binary(i, decimals: 4),
       cum: :erlang.float_to_binary(cum, decimals: 4),
       tax: :erlang.float_to_binary(t / 100, decimals: 2),
-      result: :erlang.float_to_binary(result, decimals: 2),
+      result: :erlang.float_to_binary(result, decimals: 2)
     }
 
     ~H"""
@@ -49,13 +52,12 @@ defmodule Tester1fp201.Questions.Question6 do
 
       <p>
         \[
-          \begin{align*}
-            \text{ČÚM} &= <%= @interest_rate %> \cdot (1 - <%= @tax %>) &= <%= @cum %> \\
-            \\
-            x \cdot \left(1 + \frac{<%= @cum %>}{12} \right)^{<%= @years %> \cdot 12} &= <%= @yield %> \\
-            x &= \frac{<%= @yield %>}{\left(1 + \frac{<%= @cum %>}{12}\right)^{<%= @years %> \cdot 12}} \\
-            x &= <%= @result %>
-          \end{align*}
+        \begin{align*}
+        \text{ČÚM} &= <%= @interest_rate %> \cdot (1 - <%= @tax %>) &= <%= @cum %> \\
+        \\
+        x \cdot \left(1 + \frac{<%= @cum %>}{12} \right)^{<%= @years %> \cdot 12} &= <%= @yield %> \\
+        x &= \frac{<%= @yield %>}{\left(1 + \frac{<%= @cum %>}{12}\right)^{<%= @years %> \cdot 12}} \\
+        x &= <%= @result %> \end{align*}
         \]
       </p>
     </div>

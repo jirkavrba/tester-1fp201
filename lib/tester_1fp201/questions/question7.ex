@@ -18,11 +18,16 @@ defmodule Tester1fp201.Questions.Question7 do
     ~H"""
     <div>
       <p>
-        Jak velkou částku musíte na konci každého roku vložit do fondu, abyste měli koncem <strong><%= @years %>. roku</strong> k dispozici <strong><%= @yield %> Kč</strong>?
+        Jak velkou částku musíte na konci každého roku vložit do fondu, abyste měli koncem
+        <strong><%= @years %>. roku</strong>
+        k dispozici <strong><%= @yield %> Kč</strong>?
       </p>
       <p>
-        Prostředky fondu ukládáte na účet s <strong><%= @interest_rate %>% roční nominální úrokovou sazbou</strong> a <strong>ročním</strong> skládáním.<br>
-        Úrok dále musíte zdanit <strong><%= @tax %>%</strong> sazbou z daně příjmů.
+        Prostředky fondu ukládáte na účet s
+        <strong><%= @interest_rate %>% roční nominální úrokovou sazbou</strong>
+        a <strong>ročním</strong>
+        skládáním.<br /> Úrok dále musíte zdanit <strong><%= @tax %>%</strong>
+        sazbou z daně příjmů.
       </p>
     </div>
     """
@@ -40,7 +45,7 @@ defmodule Tester1fp201.Questions.Question7 do
       interest_rate: :erlang.float_to_binary(i, decimals: 2),
       cum: :erlang.float_to_binary(cum, decimals: 4),
       tax: :erlang.float_to_binary(t / 100, decimals: 2),
-      result: :erlang.float_to_binary(result, decimals: 2),
+      result: :erlang.float_to_binary(result, decimals: 2)
     }
 
     ~H"""
@@ -49,10 +54,8 @@ defmodule Tester1fp201.Questions.Question7 do
 
       <p>
         \[
-          \begin{align*}
-            \text{ČÚM} &= <%= @interest_rate %> \cdot (1 - <%= @tax %>) = <%= @cum %> \\
-            <%= @yield %> \cdot \frac{<%= @cum %>}{(1 + <%= @cum %>)^<%= @years %> - 1} &= <%= @result %>
-          \end{align*}
+        \begin{align*}
+        \text{ČÚM} &= <%= @interest_rate %> \cdot (1 - <%= @tax %>) = <%= @cum %> \\ <%= @yield %> \cdot \frac{<%= @cum %>}{(1 + <%= @cum %>)^<%= @years %> - 1} &= <%= @result %> \end{align*}
         \]
       </p>
     </div>

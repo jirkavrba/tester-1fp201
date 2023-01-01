@@ -11,5 +11,4 @@ defmodule Tester1fp201.Question do
 
   @doc "Render the solution with assigns returned by calling the assigns function"
   @callback render_solution(assigns :: map()) :: Phoenix.LiveView.Rendered.t()
-
 end

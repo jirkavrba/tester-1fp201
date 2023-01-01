@@ -17,8 +17,11 @@ defmodule Tester1fp201.Questions.Question4 do
     ~H"""
     <div>
       <p>
-        Jestliže jste uložili dnes v bance <strong><%= @initial_deposit %></strong> Kč při <strong><%= @interest_rate %>%
-        roční nominální úrokové míře</strong>, jaký obnos si budete moci při uvažované sazbě daně z úroků ve výši <strong><%= @tax %>%</strong> a standardu 30E/360 vyzvednout
+        Jestliže jste uložili dnes v bance <strong><%= @initial_deposit %></strong>
+        Kč při <strong><%= @interest_rate %>%
+        roční nominální úrokové míře</strong>, jaký obnos si budete moci při uvažované sazbě daně z úroků ve výši
+        <strong><%= @tax %>%</strong>
+        a standardu 30E/360 vyzvednout
       </p>
 
       <ul>
@@ -40,10 +43,12 @@ defmodule Tester1fp201.Questions.Question4 do
     assigns = %{
       a: :erlang.float_to_binary((1 + cum * 5 / 12) * d, decimals: 2),
       b: :erlang.float_to_binary(:math.pow(1 + cum, 7) * d, decimals: 2),
-      c: :erlang.float_to_binary(:math.pow(1 + cum, 7) * (1 + cum * 5/12) * d, decimals: 2),
-      d: :erlang.float_to_binary(:math.pow(1 + cum / 4, 7 * 4 + 1) * (1 + (cum / 4) * 2/3) * d, decimals: 2),
+      c: :erlang.float_to_binary(:math.pow(1 + cum, 7) * (1 + cum * 5 / 12) * d, decimals: 2),
+      d:
+        :erlang.float_to_binary(:math.pow(1 + cum / 4, 7 * 4 + 1) * (1 + cum / 4 * 2 / 3) * d,
+          decimals: 2
+        ),
       e: :erlang.float_to_binary(:math.pow(1 + cum / 12, 7 * 12 + 5) * d, decimals: 2),
-
       i: i,
       cum: :erlang.float_to_binary(cum, decimals: 5),
       deposit: d,
@@ -62,15 +67,15 @@ defmodule Tester1fp201.Questions.Question4 do
 
       <div>
         \[
-          \begin{align*}
-            \text{ČÚM} &= <%= @i %> \cdot (1 - <%= @tax / 100 %>) = <%= @cum %> \\
-            \\
-            a) FV &= <%= @deposit %> \cdot (1 + \frac{<%= @cum %> \cdot 5}{12}) &= <%= @a %> \\
-            b) FV &= <%= @deposit %> \cdot (1 + <%= @cum %>)^7 &= <%= @b %> \\
-            c) FV &= <%= @deposit %> \cdot (1 + <%= @cum %>)^7 \cdot (1 + \frac{<%= @cum %> \cdot 5}{12}) &= <%= @c %> \\
-            d) FV &= <%= @deposit %> \cdot (1 + \frac{<%= @cum %>}{4})^{7 \cdot 4 + 1} \cdot (1 + \frac{<%= @cum %> \cdot 2}{12}) &= <%= @d %> \\
-            e) FV &= <%= @deposit %> \cdot (1 + \frac{<%= @cum %>}{12})^{7 \cdot 12 + 5} &= <%= @e %> \\
-          \end{align*}
+        \begin{align*}
+        \text{ČÚM} &= <%= @i %> \cdot (1 - <%= @tax / 100 %>) = <%= @cum %> \\
+        \\
+        a) FV &= <%= @deposit %> \cdot (1 + \frac{<%= @cum %> \cdot 5}{12}) &= <%= @a %> \\
+        b) FV &= <%= @deposit %> \cdot (1 + <%= @cum %>)^7 &= <%= @b %> \\
+        c) FV &= <%= @deposit %> \cdot (1 + <%= @cum %>)^7 \cdot (1 + \frac{<%= @cum %> \cdot 5}{12}) &= <%= @c %> \\
+        d) FV &= <%= @deposit %> \cdot (1 + \frac{<%= @cum %>}{4})^{7 \cdot 4 + 1} \cdot (1 + \frac{<%= @cum %> \cdot 2}{12}) &= <%= @d %> \\
+        e) FV &= <%= @deposit %> \cdot (1 + \frac{<%= @cum %>}{12})^{7 \cdot 12 + 5} &= <%= @e %> \\
+        \end{align*}
         \]
       </div>
     </div>

@@ -33,7 +33,8 @@ defmodule Tester1fp201.Questions.Question5 do
           </li>
           <li>
             b) upřednostnit alternativní investici <em>Ostružina</em>
-            s výnosovou (tj. zvažovanou) úrokovou mírou ve výši <strong><%= @interest_rate %>%</strong>
+            s výnosovou (tj. zvažovanou) úrokovou mírou ve výši
+            <strong><%= @interest_rate %>%</strong>
             (zde zvažujte zdanění úroků ve výši <strong><%= @tax %>%</strong>).
           </li>
         </ul>

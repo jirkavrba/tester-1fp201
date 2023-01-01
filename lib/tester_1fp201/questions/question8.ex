@@ -18,11 +18,17 @@ defmodule Tester1fp201.Questions.Question8 do
     ~H"""
     <div>
       <p>
-      Jak velkou částku musíte na začátku každého roku dát na spoření, abyste měli koncem <strong><%= @years %>. roku</strong> k dispozici <strong><%= @yield %> Kč</strong>?
+        Jak velkou částku musíte na začátku každého roku dát na spoření, abyste měli koncem
+        <strong><%= @years %>. roku</strong>
+        k dispozici <strong><%= @yield %> Kč</strong>?
       </p>
       <p>
-        Své úspory dáváte na účet s <strong><%= @interest_rate %>% roční nominální úrokovou sazbou</strong> a s <strong>ročním</strong> skládáním úroků.
-        Úrok musíte dále zdanit <strong><%= @tax %>%</strong> sazbou daně z příjmu.
+        Své úspory dáváte na účet s
+        <strong><%= @interest_rate %>% roční nominální úrokovou sazbou</strong>
+        a s <strong>ročním</strong>
+        skládáním úroků.
+        Úrok musíte dále zdanit <strong><%= @tax %>%</strong>
+        sazbou daně z příjmu.
       </p>
     </div>
     """
@@ -42,7 +48,7 @@ defmodule Tester1fp201.Questions.Question8 do
       cum: :erlang.float_to_binary(cum, decimals: 4),
       az: :erlang.float_to_binary(az, decimals: 2),
       tax: :erlang.float_to_binary(t / 100, decimals: 2),
-      result: :erlang.float_to_binary(result, decimals: 2),
+      result: :erlang.float_to_binary(result, decimals: 2)
     }
 
     ~H"""
@@ -51,11 +57,10 @@ defmodule Tester1fp201.Questions.Question8 do
 
       <p>
         \[
-          \begin{align*}
-            \text{ČÚM} &= <%= @interest_rate %> \cdot (1 - <%= @tax %>) = <%= @cum %> \\
-            A_Z &= <%= @yield %> \cdot \frac{<%= @cum %>}{(1 + <%= @cum %>)^<%= @years %> - 1} = <%= @az %> \\
-            A_P &= \frac{<%= @az %>}{(1 + <%= @cum %>)} = <%= @result %>
-          \end{align*}
+        \begin{align*}
+        \text{ČÚM} &= <%= @interest_rate %> \cdot (1 - <%= @tax %>) = <%= @cum %> \\
+        A_Z &= <%= @yield %> \cdot \frac{<%= @cum %>}{(1 + <%= @cum %>)^<%= @years %> - 1} = <%= @az %> \\
+        A_P &= \frac{<%= @az %>}{(1 + <%= @cum %>)} = <%= @result %> \end{align*}
         \]
       </p>
     </div>
