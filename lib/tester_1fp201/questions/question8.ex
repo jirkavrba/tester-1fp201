@@ -59,7 +59,7 @@ defmodule Tester1fp201.Questions.Question8 do
         \[
         \begin{align*}
         \text{ČÚM} &= <%= @interest_rate %> \cdot (1 - <%= @tax %>) = <%= @cum %> \\
-        A_Z &= <%= @yield %> \cdot \frac{<%= @cum %>}{(1 + <%= @cum %>)^<%= @years %> - 1} = <%= @az %> \\
+        A_Z &= <%= @yield %> \cdot \frac{<%= @cum %>}{(1 + <%= @cum %>)^{<%= @years %>} - 1} = <%= @az %> \\
         A_P &= \frac{<%= @az %>}{(1 + <%= @cum %>)} = <%= @result %> \end{align*}
         \]
       </p>
