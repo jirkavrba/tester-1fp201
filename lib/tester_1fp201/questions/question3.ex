@@ -59,7 +59,7 @@ defmodule Tester1fp201.Questions.Question3 do
       <p>
         \[
         \begin{align*}
-        \text{EÚM}_{DC} &= (1 + \frac{<%= @interest_rate %>}{360})^{360} = <%= @eum_dc %> \\
+        \text{EÚM}_{DC} &= (1 + \frac{<%= @interest_rate %>}{360})^{360} - 1 = <%= @eum_dc %> \\
         \text{EÚM}_{QC} &= \text{EÚM}_{DC} \Rightarrow \text{EÚM}_{QC} = <%= @eum_dc %> \end{align*}
         \]
         \[
