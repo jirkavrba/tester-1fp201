@@ -5,7 +5,7 @@ defmodule Tester1fp201.MixProject do
     [
       app: :tester_1fp201,
       version: "0.1.0",
-      elixir: "~> 1.13.4",
+      elixir: "~> 1.16.0",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
